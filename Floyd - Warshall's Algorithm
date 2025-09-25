@@ -1,0 +1,42 @@
+Implement the Floyd-Warshall algorithm in C for finding the shortest distances between all pairs of vertices in a weighted directed graph. Prompt the user to input the number of vertices (N) and edges (E), and then accept edge information (source, destination, and weight) to build the adjacency matrix.
+
+#include <stdio.h>
+#define INF 99999
+#define MAX_N 20 // Maximum value for N
+void algorithm(int V, int dist[][MAX_N]){
+	int i, j,k;
+	for(k=0; k<V; k++){
+		for(i=0; i<V; i++){
+			for(j=0; j<V; j++){
+				if(dist[i][k] !=INF && dist[k][j]!=INF && dist[i][k] + dist[k][j]<dist[i][j]){
+					dist[i][j] = dist[i][k] + dist[k][j];
+				}
+			}
+		}
+	}
+printf("The following matrix shows the shortest distances between all pairs of the vertices.\n");
+	for(i=0; i<V; i++){
+		for(j=0; j<V; j++){
+			if(dist[i][j]==INF){
+				printf("%5s","INF");
+			}
+			else{
+				printf("%5d",dist[i][j]);
+			}
+		}
+		printf("\n");
+	}
+}
+
+
+int main(){
+	int V, e;
+	int dist[MAX_N][MAX_N];
+	printf("Enter the number of vertices : ");
+	scanf("%d",&V);
+	printf("Enter the number of edges : ");
+	scanf("%d",&e);
+Reason for late submission
+Type reason here
+Please enter at least 15 characters
+
