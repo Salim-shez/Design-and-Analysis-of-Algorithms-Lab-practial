@@ -1,0 +1,42 @@
+Write a C program to implement Kruskal’s algorithm for finding the Minimum Cost Spanning Tree (MCST) and the total minimum cost of travel for a given undirected graph. The graph will be represented by an adjacency matrix.
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+
+
+int parent[100];
+int find(int i) {
+// Write your code here...
+	if(parent[i] == i){
+		return i;
+	}
+	return parent[i] = find(parent[i]);
+}
+
+
+void union1(int i, int j) {
+	int a = find(i);
+	int b = find(j);
+	parent[a] = b;
+	// Write your code here...
+}
+
+void kruskalMST(int **cost, int V) {
+	for(int i =0; i<V; i++){
+		parent[i] = i;
+	}
+	int edges =0, min = 0;
+	//printf("Edge");
+	while(edges < V-1){
+		int m = 9999, a = -1, b= -1;
+		for(int i =0; i<V; i++){
+			for(int j=0;j<V;j++){
+				if(cost[i][j]<m && find(i)!=find(j)){
+					m = cost[i][j];
+					a = i;
+					b =j;
+Reason for late submission
+Type reason here
+Please enter at least 15 characters
+
